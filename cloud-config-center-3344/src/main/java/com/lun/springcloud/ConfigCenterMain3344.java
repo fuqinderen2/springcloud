@@ -13,9 +13,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableConfigServer
 public class ConfigCenterMain3344 {
     public static void main(String[] args) {
-        System.out.printf("这是个傻小子");
-        System.out.printf("这是个傻小子"); System.out.printf("这是个傻小子");
-
         SpringApplication.run(ConfigCenterMain3344.class, args);
     }
 }
