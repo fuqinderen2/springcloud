@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.lun.springcloud.dao.PaymentDao">
+
+    <insert id="create" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+--         useGeneratedKeys的作用：create方法返回的是数字，当返回数字大于零则插入成功;
+--         keyProperty是主键ID;
+--         parameterType传的参数类型的实体类(在entities下的实体类)
+        insert into payment(serial)  values(#{serial});
+    </insert>
+
+    <resultMap id="BaseResultMap" type="com.lun.springcloud.entities.Payment">
+<!--        type:结果集映射的具体的实体类-->
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="serial" property="serial" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">
+--         resultMap结果集映射，当数据库和实体类字段不统一时用来对应
+        select * from payment where id=#{id};
+    </select>
+
+</mapper>
